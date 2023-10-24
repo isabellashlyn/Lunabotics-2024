@@ -1,12 +1,17 @@
 char t;
+#include list
+
+std::list<int> left_pins = {8, 9};
+std::list<int> right_pins = {10, 11};
 
 void setup() {
-pinMode(8,OUTPUT); //left motors forward
-pinMode(9,OUTPUT); //left motors back
-pinMode(10,OUTPUT); //right motor forward
-pinMode(11,OUTPUT); //right motor back
+pinMode(left_pins.front(),OUTPUT); //left motors forward
+pinMode(left_pins.back(),OUTPUT); //left motors back
+pinMode(right_pins.front(),OUTPUT); //right motor forward
+pinMode(right_pins.back(),OUTPUT); //right motor back
 Serial.begin(9600);
 }
+
  void loop()
  {
 if(Serial.available())
@@ -17,33 +22,33 @@ Serial.println(t);
  
 if(t == 'F')
  {
-digitalWrite(11,HIGH);
-digitalWrite(9,HIGH);
+digitalWrite(right_pins.back(),HIGH);
+digitalWrite(left_pins.back(),HIGH);
  }
 
 if(t == 'B')
  {
-digitalWrite(10,LOW);
-digitalWrite(8,LOW);
+digitalWrite(right_pins.front(),LOW);
+digitalWrite(left_pins.front(,LOW);
  }
 
 if(t == 'L')
  {
-digitalWrite(11,HIGH);
+digitalWrite(right_pins.back(),HIGH);
 
  }
 
 if(t == 'R')
  {
 
-digitalWrite(9,HIGH);
+digitalWrite(left_pins.back(),HIGH);
  }
 if(t == 'S')
  {
-digitalWrite(11,LOW);
-digitalWrite(9,LOW);
-digitalWrite(10,LOW);
-digitalWrite(8,LOW);
+digitalWrite(right_pins.back(),LOW);
+digitalWrite(left_pins.back(),LOW);
+digitalWrite(right_pins.front(),LOW);
+digitalWrite(left_pins.front(,LOW);
 
  }
 
